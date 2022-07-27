@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailView: View {
     var result: Result
     @State private var fav = false
-    @ObservedObject var favoritesMovies: Response
+    @ObservedObject var movies: Response
     
     var body: some View {
         ZStack{
@@ -67,15 +67,14 @@ struct DetailView: View {
     }
     
     func loadFav (){
-            favoritesMovies.results.append(result)
-        print(favoritesMovies.results.first ?? "No tiene valores")
-        print(favoritesMovies.results.count)
+        movies.results.append(result)
+        print(movies.results.count)
     }
 }
 
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(result: Result.example, favoritesMovies: Response())
+        DetailView(result: Result.example, movies: Response())
     }
 }

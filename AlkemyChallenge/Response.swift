@@ -7,10 +7,57 @@
 
 import Foundation
 
-class Response: Codable, ObservableObject {
-    var results = [Result]()
+class Movies: Codable, ObservableObject {
+    var results = Response()
+    var favorites = Response()
+    
+    static let example = Movies()
 }
 
+class Response: Codable, ObservableObject {
+    @Published var results = [Result]()
+    
+    static let example = Response()
+    
+    //    Manually conforming to Codable
+        enum CodingKeys: CodingKey {
+            case results
+        }
+        
+        required init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            results = try container.decode([Result].self, forKey: .results)
+        }
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(results, forKey: .results
+        )
+        }
+        init() { }
+}
+
+class Favorites: Codable, ObservableObject {
+    @Published var favorites = Response()
+    
+    static let example = Response()
+    
+//    Manually conforming to Codable
+    enum CodingKeys: CodingKey {
+        case favorites
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        favorites = try container.decode(Response.self, forKey: .favorites)
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(favorites, forKey: .favorites)
+    }
+    init() { }
+    
+    
+}
 
 
 
@@ -42,5 +89,9 @@ struct Genres: Codable {
 struct Genre: Codable, Hashable {
     var id: Int
     var name: String
+}
+
+enum FilterType {
+    case alLMovies, favorites
 }
 

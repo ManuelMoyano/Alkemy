@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct AlkemyChallengeApp: App {
+    @StateObject var favoriteMovies = Response()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(favoriteMovies)
         }
     }
 }

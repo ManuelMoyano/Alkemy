@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C253EF72858BDC200E6CB17 /* ViewModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF62858BDC200E6CB17 /* ViewModelListView.swift */; };
+		3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF8285A093C00E6CB17 /* MoviesView.swift */; };
 		3C2AA82C283D160B00833799 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AA82B283D160B00833799 /* RatingView.swift */; };
 		3C2AA82E283EB18700833799 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AA82D283EB18600833799 /* DetailInfoView.swift */; };
 		3C7B6BEF28368E39007AC754 /* AlkemyChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B6BEE28368E39007AC754 /* AlkemyChallengeApp.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C253EF62858BDC200E6CB17 /* ViewModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelListView.swift; sourceTree = "<group>"; };
+		3C253EF8285A093C00E6CB17 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		3C2AA82B283D160B00833799 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		3C2AA82D283EB18600833799 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		3C7B6BEB28368E39007AC754 /* AlkemyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlkemyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +70,9 @@
 				3C7B6BEE28368E39007AC754 /* AlkemyChallengeApp.swift */,
 				3C7B6BF028368E39007AC754 /* ContentView.swift */,
 				3CEBB8A6284902EF00C2BAB1 /* LoginView.swift */,
+				3C253EF8285A093C00E6CB17 /* MoviesView.swift */,
 				3CEF58E8283EEF84002792A4 /* ListView.swift */,
+				3C253EF62858BDC200E6CB17 /* ViewModelListView.swift */,
 				3C7B6C022837BC31007AC754 /* DetailView.swift */,
 				3C2AA82D283EB18600833799 /* DetailInfoView.swift */,
 				3C2AA82B283D160B00833799 /* RatingView.swift */,
@@ -156,9 +162,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7B6BFF28368F8F007AC754 /* Response.swift in Sources */,
+				3C253EF72858BDC200E6CB17 /* ViewModelListView.swift in Sources */,
 				3C2AA82C283D160B00833799 /* RatingView.swift in Sources */,
 				3C7B6C032837BC31007AC754 /* DetailView.swift in Sources */,
 				3CEF58E9283EEF84002792A4 /* ListView.swift in Sources */,
+				3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */,
 				3C7B6BF128368E39007AC754 /* ContentView.swift in Sources */,
 				3C7B6BEF28368E39007AC754 /* AlkemyChallengeApp.swift in Sources */,
 				3CEBB8A7284902EF00C2BAB1 /* LoginView.swift in Sources */,
