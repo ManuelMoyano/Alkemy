@@ -7,12 +7,6 @@
 
 import Foundation
 
-class Movies: Codable, ObservableObject {
-    var results = Response()
-    var favorites = Response()
-    
-    static let example = Movies()
-}
 
 class Response: Codable, ObservableObject {
     @Published var results = [Result]()
@@ -33,11 +27,31 @@ class Response: Codable, ObservableObject {
             try container.encode(results, forKey: .results
         )
         }
-        init() { }
+//        init() { }
+    
+    //    Carga de datos en DocumentDirectory
+        let saveKey = "SavedData"
+
+        init() {
+            if let data = UserDefaults.standard.data(forKey: saveKey) {
+                if let decoded = try? JSONDecoder().decode([Result].self, from: data) {
+                    results = decoded
+                    return
+                }
+            }
+
+            results = [Result]()
+        }
+        
+        func save() {
+            if let encoded = try? JSONEncoder().encode(results) {
+                UserDefaults.standard.set(encoded, forKey: saveKey)
+            }
+        }
 }
 
 class Favorites: Codable, ObservableObject {
-    @Published var favorites = Response()
+    @Published var favorites = [Result]()
     
     static let example = Response()
     
@@ -48,14 +62,33 @@ class Favorites: Codable, ObservableObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        favorites = try container.decode(Response.self, forKey: .favorites)
+        favorites = try container.decode([Result].self, forKey: .favorites)
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(favorites, forKey: .favorites)
     }
-    init() { }
+//    init() { }
     
+//    Carga de datos en DocumentDirectory
+    let saveKey = "SavedDataFavorites"
+
+    init() {
+        if let data = UserDefaults.standard.data(forKey: saveKey) {
+            if let decoded = try? JSONDecoder().decode([Result].self, from: data) {
+                favorites = decoded
+                return
+            }
+        }
+
+        favorites = [Result]()
+    }
+    
+    private func save() {
+        if let encoded = try? JSONEncoder().encode(favorites) {
+            UserDefaults.standard.set(encoded, forKey: saveKey)
+        }
+    }
     
 }
 

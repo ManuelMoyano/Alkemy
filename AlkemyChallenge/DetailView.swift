@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     var result: Result
+    var filter: FilterType
     @State private var fav = false
     @ObservedObject var movies: Response
     
@@ -18,17 +19,28 @@ struct DetailView: View {
             .ignoresSafeArea()
         ScrollView {
             VStack {
-                HStack {
-                    Text ("Añadir a Favoritos")
-                    Image(systemName: "plus")
-                        .foregroundColor(.white)
-                        .onTapGesture {
-                            fav.toggle()
-                            loadFav()
-                        }
-                    Image(systemName: "star.fill")
-                        .foregroundColor(fav ? .yellow:.gray)
+                if filter == .alLMovies {
+                    HStack {
+                        Text ("Añadir a Favoritos")
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                            .onTapGesture {
+                                fav.toggle()
+                                loadFav()
+                            }
+                        Image(systemName: "star.fill")
+                            .foregroundColor(fav ? .yellow:.gray)
+                    }
+                } else {
+                    HStack {
+                        Text ("Añadir a Favoritos")
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
                 }
+                
                 VStack {
                     AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(result.poster_path)")) { image in
                             image.resizable()
@@ -69,12 +81,13 @@ struct DetailView: View {
     func loadFav (){
         movies.results.append(result)
         print(movies.results.count)
+        movies.save()
     }
 }
 
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(result: Result.example, movies: Response())
+        DetailView(result: Result.example, filter: .alLMovies, movies: Response())
     }
 }
