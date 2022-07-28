@@ -26,7 +26,7 @@ struct DetailView: View {
                             .foregroundColor(.white)
                             .onTapGesture {
                                 fav.toggle()
-                                loadFav()
+                                addFav()
                             }
                         Image(systemName: "star.fill")
                             .foregroundColor(fav ? .yellow:.gray)
@@ -78,7 +78,7 @@ struct DetailView: View {
     }
     }
     
-    func loadFav (){
+    func addFav (){
         movies.results.append(result)
         print(movies.results.count)
         movies.save()

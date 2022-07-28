@@ -10,9 +10,7 @@ import Foundation
 extension MoviesView {
     @MainActor class ViewModelMoviesView: ObservableObject {
         @Published var allMovies = Response()
-        enum FilterType {
-            case alLMovies, favorites
-        }
+
 
         
         func loadAllmovies() async {

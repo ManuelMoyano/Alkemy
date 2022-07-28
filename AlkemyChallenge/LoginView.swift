@@ -13,7 +13,6 @@ struct LoginView: View {
     
     
     var body: some View {
-//        NavigationView{
             ZStack{
                 Image("BackImage")
                     .resizable()
@@ -56,7 +55,6 @@ struct LoginView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 30))
 
             }
-//        }
     }
 }
 

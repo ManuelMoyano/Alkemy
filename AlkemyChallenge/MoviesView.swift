@@ -25,6 +25,7 @@ struct MoviesView: View {
             }
             .background(.black)
         }.onAppear {
+                    favoriteMovies.loadFavorites()
                     Task {
                         await viewModel.loadAllmovies()
                     }
