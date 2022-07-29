@@ -51,7 +51,7 @@ class Response: Codable, ObservableObject {
 }
 
 
-struct Result: Codable {
+struct Result: Codable, Equatable {
     var poster_path: String
 //    var adult: Bool
     var overview: String

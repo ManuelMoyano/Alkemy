@@ -19,27 +19,28 @@ struct DetailView: View {
             .ignoresSafeArea()
         ScrollView {
             VStack {
-                if filter == .alLMovies {
                     HStack {
                         Text ("Añadir a Favoritos")
-                        Image(systemName: "plus")
                             .foregroundColor(.white)
-                            .onTapGesture {
-                                fav.toggle()
-                                addFav()
-                            }
+                        
+                        if fav == false {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    fav.toggle()
+                                    addFav()
+                                }
+                        } else {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    fav.toggle()
+                                    removeFav()
+                                }
+                        }
                         Image(systemName: "star.fill")
                             .foregroundColor(fav ? .yellow:.gray)
                     }
-                } else {
-                    HStack {
-                        Text ("Añadir a Favoritos")
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                    }
-                }
                 
                 VStack {
                     AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(result.poster_path)")) { image in
@@ -75,13 +76,37 @@ struct DetailView: View {
             }
             }
         }.background(.black)
-    }
+    }.onAppear {
+            starfill()
+        }
+        
     }
     
     func addFav (){
+        var count = 0
+        for i in movies.results {
+            if  i.original_title == result.original_title {
+                count += 1
+            }
+        }
+        if count == 0 {
         movies.results.append(result)
         print(movies.results.count)
         movies.save()
+        } else {
+            print ("This movie is already in favorites")
+        }
+    }
+    func removeFav () {
+        movies.results = movies.results.filter{ $0.original_title != result.original_title}
+        movies.save()
+    }
+    func starfill () {
+        for i in movies.results {
+            if i.original_title == result.original_title {
+                fav = true
+            }
+        }
     }
 }
 
