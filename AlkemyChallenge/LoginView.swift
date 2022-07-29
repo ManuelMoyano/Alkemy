@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var login: LogInCheck
     @State private var email = "example@gmail.com"
     @State private var password = "1234"
     
@@ -48,6 +49,9 @@ struct LoginView: View {
                             .frame(width:100, height: 30)
                             .background(.gray)
                             .cornerRadius(_:20)
+                        }.onTapGesture {
+                            login.login.toggle()
+                            print (login.login)
                         }
                 }
                 .frame(width: 280, height: 350, alignment: .center)

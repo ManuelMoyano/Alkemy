@@ -9,12 +9,19 @@ import SwiftUI
 
 @main
 struct AlkemyChallengeApp: App {
-    @StateObject var favoriteMovies = Response()
+//    @StateObject var favoriteMovies = Response()
+    @StateObject var login: LogInCheck = LogInCheck()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(favoriteMovies)
+            if login.login {
+                MoviesView()
+                    .environmentObject(login)
+            
+            } else {
+                LoginView()
+                    .environmentObject(login)
+            }
         }
     }
 }

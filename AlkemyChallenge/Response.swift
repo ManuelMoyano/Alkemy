@@ -83,3 +83,6 @@ enum FilterType {
     case alLMovies, favorites
 }
 
+class LogInCheck: ObservableObject {
+    @Published var login = false
+}
