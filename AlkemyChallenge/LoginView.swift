@@ -11,6 +11,17 @@ struct LoginView: View {
     @EnvironmentObject var login: LogInCheck
     @State private var email = "example@gmail.com"
     @State private var password = "1234"
+    @State private var showingAlert = false
+    private let validEmails = ["@gmail.com","@hotmail.com"]
+    var hasValidEmail: Bool {
+        if email.isEmpty {
+            return false
+        }
+        if validEmails.contains(where: email.contains){
+            return true
+        }
+        return false
+    }
     
     
     var body: some View {
@@ -25,6 +36,7 @@ struct LoginView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
+                        .keyboardType(.emailAddress)
 
                     TextField("\(email)", text: $email)
                         .border(Color(UIColor.separator))
@@ -36,11 +48,12 @@ struct LoginView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                    TextField("\(password)", text: $password)
+                    SecureField("\(password)", text: $password)
                         .border(Color(UIColor.separator))
                         .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding()
+                    Section{
                         NavigationLink {
                             MoviesView()
                         } label: {
@@ -50,9 +63,18 @@ struct LoginView: View {
                             .background(.gray)
                             .cornerRadius(_:20)
                         }.onTapGesture {
+                            if hasValidEmail {
                             login.login.toggle()
                             print (login.login)
+                            } else {
+                                showingAlert = true
+                            }
                         }
+                    }
+//                    .disabled(hasValidEmail == false)
+                    .alert("Invalid email adress", isPresented: $showingAlert) {
+                        Button("OK") { }
+                    }
                 }
                 .frame(width: 280, height: 350, alignment: .center)
                 .background(.black)
