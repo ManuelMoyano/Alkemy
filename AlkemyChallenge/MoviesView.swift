@@ -27,7 +27,13 @@ struct MoviesView: View {
         }.onAppear {
                     favoriteMovies.loadFavorites()
                     Task {
-                        await viewModel.loadAllmovies()
+//                        await viewModel.loadAllmovies()
+                        viewModel.loadAllMoviesAlamofire { movies in
+                            viewModel.allMovies = movies
+                        } failure: { error in
+                            print ("Error al cargar los datos \(String(describing: error))")
+                        }
+
                     }
         }
     }

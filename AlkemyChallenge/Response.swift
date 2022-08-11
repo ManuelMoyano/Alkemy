@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+    
 class Response: Codable, ObservableObject {
     @Published var results = [Result]()
     
@@ -69,7 +69,7 @@ struct Result: Codable, Equatable {
     
     static let example = Result(poster_path:"Imagen", overview: "Descripcion", release_date: "Enero-2022", genre_ids: [2,5,1,9,10,12,19], id: 1, original_title: "SuperMan", original_language: "English", backdrop_path: "/ndlQ2Cuc3cjTL7lTynw6I4boP4S.jpg", popularity: 8.1, vote_average: 4.5)
     
-}
+    }
 
 struct Genres: Codable {
     var genres: [Genre]

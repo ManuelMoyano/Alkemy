@@ -6,32 +6,32 @@
 //
 
 import Foundation
+import Alamofire
 
 extension MoviesView {
     @MainActor class ViewModelMoviesView: ObservableObject {
         @Published var allMovies = Response()
-
+        private let kStatusOk = 200...299
+        private let apiKey = "adbba095f2045455a8907182acd1ab46"
+        private let kBaseUrl = "https://api.themoviedb.org/3/movie/popular?"
+        private let kBaseSearch = "&language=en-US&page=1"
 
         
-        func loadAllmovies() async {
-        //    Creating the URL we want to read.
-        //    Fetching the data for that URL.
-        //    Decoding the result of that data into a struct.
-            guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=adbba095f2045455a8907182acd1ab46&language=en-US&page=1") else {
-                print("Invalid URL")
-                return
-            }
-            do {
-        //      El guion bajo en data descarta los metadatos y se queda solo con los datos de la URL
-                let (data, _) = try await URLSession.shared.data(from: url)
-
-                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                    allMovies = decodedResponse
+        func loadAllMoviesAlamofire (success: @escaping (_ movies: Response) -> (), failure: @escaping (_ error: Error?) -> ()){
+            
+            let url = "\(kBaseUrl)api_key=\(apiKey)\(kBaseSearch)"
+            
+            AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: Response.self) {  response in
+                
+                if let movies = response.value {
+                    success(movies)
+                } else {
+                    failure(response.error)
                 }
-            } catch {
-                print("Invalid data")
             }
         }
+        
+        
     }
     
 }
