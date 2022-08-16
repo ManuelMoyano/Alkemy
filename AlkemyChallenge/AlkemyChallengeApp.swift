@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct AlkemyChallengeApp: App {
-//    @StateObject var favoriteMovies = Response()
     @StateObject var login: LogInCheck = LogInCheck()
     
     var body: some Scene {

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var login: LogInCheck
+    @StateObject var viewModel = ViewModelLoginView()
     @State private var email = "example@gmail.com"
     @State private var password = "1234"
     @State private var showingAlert = false
+    @State private var showingSheet = false
     private let validEmails = ["@gmail.com","@hotmail.com"]
     var hasValidEmail: Bool {
         if email.isEmpty {
@@ -54,24 +56,32 @@ struct LoginView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding()
                     Section{
-                        NavigationLink {
-                            MoviesView()
-                        } label: {
-                            Text("Login")
+                            Text("Authenticate Token")
                             .foregroundColor(.white)
-                            .frame(width:100, height: 30)
+                            .frame(width:160, height: 30)
                             .background(.gray)
                             .cornerRadius(_:20)
-                        }.onTapGesture {
+                            .onTapGesture {
                             if hasValidEmail {
-                            login.login.toggle()
-                            print (login.login)
+                                viewModel.getTokenAlamofire()
+                                showingSheet.toggle()
                             } else {
                                 showingAlert = true
                             }
+                        }.sheet(isPresented: $showingSheet) {
+                            TokenAuthenticationView(url: "https://www.themoviedb.org/authenticate/\(viewModel.tokenRequest.request_token)")
                         }
+                        if (viewModel.tokenRequest.request_token != "") {
+                            Button ("Login") {
+                                viewModel.creatSessionID()
+                                login.login.toggle()
+                            }
+                                .foregroundColor(.white)
+                                .frame(width:120, height: 30)
+                                .background(.blue)
+                                .cornerRadius(_:20)
+                            }
                     }
-//                    .disabled(hasValidEmail == false)
                     .alert("Invalid email adress", isPresented: $showingAlert) {
                         Button("OK") { }
                     }
