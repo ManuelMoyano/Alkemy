@@ -71,17 +71,17 @@ struct Result: Codable, Equatable {
     
     }
 
-struct Genres: Codable {
-    var genres: [Genre]
-}
-struct Genre: Codable, Hashable {
-    var id: Int
-    var name: String
-}
+//struct Genres: Codable {
+//    var genres: [Genre]
+//}
+//struct Genre: Codable, Hashable {
+//    var id: Int
+//    var name: String
+//}
 
-enum FilterType {
-    case alLMovies, favorites
-}
+//enum FilterType {
+//    case alLMovies, favorites
+//}
 
 class LogInCheck: ObservableObject {
     @Published var login = false

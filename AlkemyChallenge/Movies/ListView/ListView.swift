@@ -27,7 +27,7 @@ struct ListView: View {
             List (filteredMovies.results, id: \.id) { item in
                 VStack (alignment: .leading) {
                     NavigationLink {
-                        DetailView (result: item, filter: filter, movies: favoriteMovies)
+                        DetailView (result: item, filter: filter, favoriteMovies: favoriteMovies)
                     } label: {
                         HStack {
                             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path)")) { image in

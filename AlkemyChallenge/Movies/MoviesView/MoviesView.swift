@@ -25,14 +25,16 @@ struct MoviesView: View {
             }
             .background(.black)
         }.onAppear {
-                    favoriteMovies.loadFavorites()
-                    Task {
-                        NetWorkingProvider.shared.loadAllMoviesAlamofire { movies in
-                            viewModel.allMovies = movies
-                        } failure: { error in
-                            print ("Error al cargar los datos \(String(describing: error))")
-                        }
-                    }
+            NetWorkingProvider.shared.getFavAlamorife { listFav in
+                favoriteMovies.results = listFav.results!
+            } failure: { error in
+                print(error!)
+            }
+            NetWorkingProvider.shared.loadAllMoviesAlamofire { movies in
+                viewModel.allMovies = movies
+            } failure: { error in
+                print ("Error al cargar los datos \(String(describing: error))")
+            }
         }
     }
 }

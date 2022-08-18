@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
+    @StateObject var viewModel = ViewModelDetailView()
     var result: Result
     var filter: FilterType
     @State private var fav = false
-    @ObservedObject var movies: Response
+    @ObservedObject var favoriteMovies: Response
     
     var body: some View {
         ZStack{
@@ -28,14 +29,35 @@ struct DetailView: View {
                                 .foregroundColor(.white)
                                 .onTapGesture {
                                     fav.toggle()
-                                    addFav()
+                                    NetWorkingProvider.shared.addFavAlamofire(newFav: NewFavorite(media_type: "movie", media_id: result.id, favorite: true)) { fav in
+                                        print ("Se añadio a fav")
+                                        NetWorkingProvider.shared.getFavAlamorife { listFav in
+                                            print("Se actualizo la lista de Fav")
+                                            favoriteMovies.results = listFav.results!
+                                        } failure: { error in
+                                            print(error!)
+                                        }
+
+                                    } failure: { error in
+                                        print("No se pudo añadir por el error \(String(describing: error))")
+                                    }
                                 }
                         } else {
                             Image(systemName: "plus")
                                 .foregroundColor(.white)
                                 .onTapGesture {
                                     fav.toggle()
-                                    removeFav()
+                                    NetWorkingProvider.shared.addFavAlamofire(newFav: NewFavorite(media_type: "movie", media_id: result.id, favorite: false)) { fav in
+                                        print ("Se quito de fav")
+                                        NetWorkingProvider.shared.getFavAlamorife { listFav in
+                                            print("Se actualizo la lista de Fav")
+                                            favoriteMovies.results = listFav.results!
+                                        } failure: { error in
+                                            print(error!)
+                                        }
+                                    } failure: { error in
+                                        print("No se pudo añadir por el error \(String(describing: error))")
+                                    }
                                 }
                         }
                         Image(systemName: "star.fill")
@@ -77,34 +99,15 @@ struct DetailView: View {
             }
         }.background(.black)
     }.onAppear {
-            starfill()
-        print(result.id)
+        starfill()
+//        print(result.id)
         }
         
     }
     
-    func addFav (){
-        var count = 0
-        for i in movies.results {
-            if  i.original_title == result.original_title {
-                count += 1
-            }
-        }
-        if count == 0 {
-        movies.results.append(result)
-        print(movies.results.count)
-        movies.save()
-        } else {
-            print ("This movie is already in favorites")
-        }
-    }
 
-    func removeFav () {
-        movies.results = movies.results.filter{ $0.original_title != result.original_title}
-        movies.save()
-    }
     func starfill () {
-        for i in movies.results {
+        for i in favoriteMovies.results {
             if i.original_title == result.original_title {
                 fav = true
             }
@@ -115,6 +118,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(result: Result.example, filter: .alLMovies, movies: Response())
+        DetailView(result: Result.example, filter: .alLMovies, favoriteMovies: Response())
     }
 }
