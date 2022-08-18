@@ -58,6 +58,7 @@ struct DetailInfoView: View {
                     .foregroundColor(.white)
                     Text (result.release_date)
                     .font(.body)
+                    .foregroundColor(.white)
                     .padding(.bottom, 1.0)
                     Spacer()
                 .task {

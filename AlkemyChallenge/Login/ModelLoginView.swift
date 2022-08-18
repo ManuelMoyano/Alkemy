@@ -24,7 +24,7 @@ class SessionIdRequest: Decodable, ObservableObject {
 //    "session_id": "79191836ddaa0da3df76a5ffef6f07ad6ab0c641"
     
     var success: Bool?
-    var session_id: String?
+    var session_id = ""
 }
 
 struct TokenPost: Encodable {

@@ -78,6 +78,7 @@ struct DetailView: View {
         }.background(.black)
     }.onAppear {
             starfill()
+        print(result.id)
         }
         
     }
@@ -97,6 +98,7 @@ struct DetailView: View {
             print ("This movie is already in favorites")
         }
     }
+
     func removeFav () {
         movies.results = movies.results.filter{ $0.original_title != result.original_title}
         movies.save()

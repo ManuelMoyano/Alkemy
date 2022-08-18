@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3C1A471528A6D42A007A5ED3 /* TokenAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A471428A6D42A007A5ED3 /* TokenAuthenticationView.swift */; };
 		3C1A471728A6D51F007A5ED3 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A471628A6D51F007A5ED3 /* WebView.swift */; };
+		3C1A471B28AC779C007A5ED3 /* ViewModelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A471A28AC779C007A5ED3 /* ViewModelDetailView.swift */; };
+		3C1A472028AC79EB007A5ED3 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A471F28AC79EB007A5ED3 /* Favorites.swift */; };
+		3C1A472228AC7DAA007A5ED3 /* NetWorkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472128AC7DAA007A5ED3 /* NetWorkingProvider.swift */; };
+		3C1A472428ADB905007A5ED3 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472328ADB905007A5ED3 /* AccountData.swift */; };
 		3C253EF72858BDC200E6CB17 /* ViewModelMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */; };
 		3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF8285A093C00E6CB17 /* MoviesView.swift */; };
 		3C2AA82C283D160B00833799 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AA82B283D160B00833799 /* RatingView.swift */; };
@@ -29,6 +33,10 @@
 /* Begin PBXFileReference section */
 		3C1A471428A6D42A007A5ED3 /* TokenAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthenticationView.swift; sourceTree = "<group>"; };
 		3C1A471628A6D51F007A5ED3 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		3C1A471A28AC779C007A5ED3 /* ViewModelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDetailView.swift; sourceTree = "<group>"; };
+		3C1A471F28AC79EB007A5ED3 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		3C1A472128AC7DAA007A5ED3 /* NetWorkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkingProvider.swift; sourceTree = "<group>"; };
+		3C1A472328ADB905007A5ED3 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMoviesView.swift; sourceTree = "<group>"; };
 		3C253EF8285A093C00E6CB17 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		3C2AA82B283D160B00833799 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -58,6 +66,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C1A471C28AC77CF007A5ED3 /* MoviesView */ = {
+			isa = PBXGroup;
+			children = (
+				3C253EF8285A093C00E6CB17 /* MoviesView.swift */,
+				3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */,
+				3CEF58E8283EEF84002792A4 /* ListView.swift */,
+			);
+			path = MoviesView;
+			sourceTree = "<group>";
+		};
+		3C1A471D28AC77F8007A5ED3 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				3C7B6C022837BC31007AC754 /* DetailView.swift */,
+				3C1A471A28AC779C007A5ED3 /* ViewModelDetailView.swift */,
+				3C2AA82D283EB18600833799 /* DetailInfoView.swift */,
+				3C2AA82B283D160B00833799 /* RatingView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		3C1A471E28AC79C0007A5ED3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3C7B6BFE28368F8F007AC754 /* Response.swift */,
+				3C1A471F28AC79EB007A5ED3 /* Favorites.swift */,
+				3C1A472328ADB905007A5ED3 /* AccountData.swift */,
+				3C1A472128AC7DAA007A5ED3 /* NetWorkingProvider.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		3C7B6BE228368E39007AC754 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7B6BEE28368E39007AC754 /* AlkemyChallengeApp.swift */,
+				3C1A471E28AC79C0007A5ED3 /* Data */,
 				3C858ACD28A67D6F0049565D /* Login */,
 				3C858ACE28A67DA40049565D /* Movies */,
 				3C858AC628A55A900049565D /* Decoder */,
@@ -118,13 +159,8 @@
 		3C858ACE28A67DA40049565D /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				3C7B6BFE28368F8F007AC754 /* Response.swift */,
-				3C253EF8285A093C00E6CB17 /* MoviesView.swift */,
-				3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */,
-				3CEF58E8283EEF84002792A4 /* ListView.swift */,
-				3C7B6C022837BC31007AC754 /* DetailView.swift */,
-				3C2AA82D283EB18600833799 /* DetailInfoView.swift */,
-				3C2AA82B283D160B00833799 /* RatingView.swift */,
+				3C1A471C28AC77CF007A5ED3 /* MoviesView */,
+				3C1A471D28AC77F8007A5ED3 /* DetailView */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -212,11 +248,15 @@
 				3C858ACC28A67C6A0049565D /* ModelLoginView.swift in Sources */,
 				3C7B6C032837BC31007AC754 /* DetailView.swift in Sources */,
 				3CEF58E9283EEF84002792A4 /* ListView.swift in Sources */,
+				3C1A472428ADB905007A5ED3 /* AccountData.swift in Sources */,
 				3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */,
 				3C7B6BEF28368E39007AC754 /* AlkemyChallengeApp.swift in Sources */,
 				3CEBB8A7284902EF00C2BAB1 /* LoginView.swift in Sources */,
 				3C858AC828A55AAE0049565D /* DateDecoder.swift in Sources */,
+				3C1A471B28AC779C007A5ED3 /* ViewModelDetailView.swift in Sources */,
+				3C1A472228AC7DAA007A5ED3 /* NetWorkingProvider.swift in Sources */,
 				3C1A471528A6D42A007A5ED3 /* TokenAuthenticationView.swift in Sources */,
+				3C1A472028AC79EB007A5ED3 /* Favorites.swift in Sources */,
 				3C2AA82E283EB18700833799 /* DetailInfoView.swift in Sources */,
 				3C1A471728A6D51F007A5ED3 /* WebView.swift in Sources */,
 			);

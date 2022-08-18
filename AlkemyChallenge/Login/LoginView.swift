@@ -63,7 +63,12 @@ struct LoginView: View {
                             .cornerRadius(_:20)
                             .onTapGesture {
                             if hasValidEmail {
-                                viewModel.getTokenAlamofire()
+                                NetWorkingProvider.shared.getTokenAlamofire { token in
+                                    viewModel.tokenRequest = token
+                                } failure: { error in
+                                    print(error ?? "No error description")
+                                    viewModel.stringError = error.debugDescription
+                                }
                                 showingSheet.toggle()
                             } else {
                                 showingAlert = true
@@ -73,7 +78,13 @@ struct LoginView: View {
                         }
                         if (viewModel.tokenRequest.request_token != "") {
                             Button ("Login") {
-                                viewModel.creatSessionID()
+                                NetWorkingProvider.shared.creatSessionID(token: viewModel.tokenRequest) { sessionId in
+                                    viewModel.sessionId = sessionId
+                                } failure: { error in
+                                    print(error ?? "No error description")
+                                    viewModel.stringError = error.debugDescription
+                                }
+
                                 login.login.toggle()
                             }
                                 .foregroundColor(.white)
@@ -81,6 +92,32 @@ struct LoginView: View {
                                 .background(.blue)
                                 .cornerRadius(_:20)
                             }
+                        Button("Session Id") {
+                            NetWorkingProvider.shared.creatSessionID(token: viewModel.tokenRequest) { sessionId in
+                                viewModel.sessionId = sessionId
+                            } failure: { error in
+                                print(error ?? "No error description")
+                                viewModel.stringError = error.debugDescription
+                            }
+                        }
+                        Button("Add Fav") {
+                                NetWorkingProvider.shared.addFavAlamofire( newFav: viewModel.newFav) { fav in
+                                    viewModel.newFavResponse = fav
+                                    print(viewModel.newFavResponse.status_message ?? "No se agrego el fav")
+                                } failure: { error in
+                                    viewModel.stringError = error?.localizedDescription ?? "No error description"
+                                }
+                            
+
+                        }
+                        Button ("Get Fav"){
+                            NetWorkingProvider.shared.getFavAlamorife { listFav in
+                                print(listFav.total_results)
+                            } failure: { error in
+                                print(error!)
+                            }
+
+                        }
                     }
                     .alert("Invalid email adress", isPresented: $showingAlert) {
                         Button("OK") { }
