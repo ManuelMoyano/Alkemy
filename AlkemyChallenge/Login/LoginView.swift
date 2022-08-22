@@ -100,24 +100,7 @@ struct LoginView: View {
 //                                viewModel.stringError = error.debugDescription
 //                            }
 //                        }
-//                        Button("Add Fav") {
-//                                NetWorkingProvider.shared.addFavAlamofire( newFav: viewModel.newFav) { fav in
-//                                    viewModel.newFavResponse = fav
-//                                    print(viewModel.newFavResponse.status_message ?? "No se agrego el fav")
-//                                } failure: { error in
-//                                    viewModel.stringError = error?.localizedDescription ?? "No error description"
-//                                }
-                            
 
-//                        }
-//                        Button ("Get Fav"){
-//                            NetWorkingProvider.shared.getFavAlamorife { listFav in
-//                                print(listFav.total_results)
-//                            } failure: { error in
-//                                print(error!)
-//                            }
-//
-//                        }
                     }
                     .alert("Invalid email adress", isPresented: $showingAlert) {
                         Button("OK") { }

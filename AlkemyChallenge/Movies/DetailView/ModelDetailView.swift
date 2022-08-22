@@ -58,3 +58,4 @@ struct ListFavorites: Decodable {
     var total_pages: Int?
     var total_results: Int?
 }
+

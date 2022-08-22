@@ -20,6 +20,7 @@ struct RatingView: View {
                     .foregroundColor(number > rating ? offColor : onColor)
                     .onTapGesture {
                         rating = number
+                        print (rating)
                     }
             }
         }

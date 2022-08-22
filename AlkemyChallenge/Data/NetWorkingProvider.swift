@@ -11,6 +11,8 @@ import Alamofire
 final class NetWorkingProvider {
     
     static let shared = NetWorkingProvider()
+    private init(){}
+    
     private let apiKey = "adbba095f2045455a8907182acd1ab46"
     private let kStatusOk = 1...499
     private let kBaseUrl = "https://api.themoviedb.org/3/movie/popular?"
@@ -105,9 +107,26 @@ final class NetWorkingProvider {
             } else {
                 failure(response.error)
             }
-        
-        
         }
     }
+    
+    func ratemovie (movie: Int, value: NewRate, success: @escaping (_ rate: RateResponse)->(), failure: @escaping (_ error: Error?)->()){
+        let url = "https://api.themoviedb.org/3/movie/\(movie)/rating?api_key=\(apiKey)&session_id=\(pSessionId)"
+
+        
+        let headers: HTTPHeaders = [.contentType("application/json;charset=utf-8")]
+        
+        AF.request(url, method: .post, parameters: value, encoder: JSONParameterEncoder.default, headers: headers).validate(statusCode: kStatusOk).responseDecodable(of: RateResponse.self) { response in
+            
+            if let rateResponse = response.value {
+                success(rateResponse)
+            } else {
+                failure(response.error)
+            }
+        }
+    }
+    
+    
+    
     
 }

@@ -13,6 +13,8 @@ struct DetailView: View {
     var filter: FilterType
     @State private var fav = false
     @ObservedObject var favoriteMovies: Response
+    @State private var showingSheet = false
+    var rating = 0
     
     var body: some View {
         ZStack{
@@ -21,7 +23,7 @@ struct DetailView: View {
         ScrollView {
             VStack {
                     HStack {
-                        Text ("Añadir a Favoritos")
+                        Text ("Add to Favorites")
                             .foregroundColor(.white)
                         
                         if fav == false {
@@ -72,10 +74,29 @@ struct DetailView: View {
                         }
                         .padding(10)
                         .frame(width: 200, height: 300, alignment: .center)
-                    
-                    
+    
                     Text(result.original_title)
                         .font(.largeTitle)
+                        .foregroundColor(.white)
+                    HStack{
+                        Button {
+                            showingSheet.toggle()
+                        } label: {
+                            Text("Rate")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            Image(systemName: "hand.thumbsup")
+                                .foregroundColor(.white)
+                        }.sheet(isPresented: $showingSheet) {
+                            RatingMovieView(movie: result.id, rating: rating)
+                        }
+                    }
+                    .padding(.vertical,5)
+                    .padding(.horizontal,10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.white, lineWidth: 2)
+                    )
                     HStack {
                     RatingView(rating: .constant(Int(result.vote_average)))
                             .font(.headline)
@@ -100,7 +121,6 @@ struct DetailView: View {
         }.background(.black)
     }.onAppear {
         starfill()
-//        print(result.id)
         }
         
     }

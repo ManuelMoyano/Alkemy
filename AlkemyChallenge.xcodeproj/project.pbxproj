@@ -15,6 +15,7 @@
 		3C1A472428ADB905007A5ED3 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472328ADB905007A5ED3 /* AccountData.swift */; };
 		3C1A472628AE56CD007A5ED3 /* ModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472528AE56CD007A5ED3 /* ModelListView.swift */; };
 		3C1A472928AE5812007A5ED3 /* ModelDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472828AE5812007A5ED3 /* ModelDetailInfoView.swift */; };
+		3C1A472C28AE78B7007A5ED3 /* ModelRatingview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A472B28AE78B7007A5ED3 /* ModelRatingview.swift */; };
 		3C253EF72858BDC200E6CB17 /* ViewModelMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */; };
 		3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EF8285A093C00E6CB17 /* MoviesView.swift */; };
 		3C2AA82C283D160B00833799 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AA82B283D160B00833799 /* RatingView.swift */; };
@@ -30,6 +31,7 @@
 		3C858ACC28A67C6A0049565D /* ModelLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C858ACB28A67C6A0049565D /* ModelLoginView.swift */; };
 		3CEBB8A7284902EF00C2BAB1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEBB8A6284902EF00C2BAB1 /* LoginView.swift */; };
 		3CEF58E9283EEF84002792A4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEF58E8283EEF84002792A4 /* ListView.swift */; };
+		3CFA2F8E28AF205300CD85A4 /* RatingMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA2F8D28AF205300CD85A4 /* RatingMovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,7 @@
 		3C1A472328ADB905007A5ED3 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		3C1A472528AE56CD007A5ED3 /* ModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelListView.swift; sourceTree = "<group>"; };
 		3C1A472828AE5812007A5ED3 /* ModelDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDetailInfoView.swift; sourceTree = "<group>"; };
+		3C1A472B28AE78B7007A5ED3 /* ModelRatingview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRatingview.swift; sourceTree = "<group>"; };
 		3C253EF62858BDC200E6CB17 /* ViewModelMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMoviesView.swift; sourceTree = "<group>"; };
 		3C253EF8285A093C00E6CB17 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		3C2AA82B283D160B00833799 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		3C858ACB28A67C6A0049565D /* ModelLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoginView.swift; sourceTree = "<group>"; };
 		3CEBB8A6284902EF00C2BAB1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3CEF58E8283EEF84002792A4 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		3CFA2F8D28AF205300CD85A4 /* RatingMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingMovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				3C1A471F28AC79EB007A5ED3 /* ModelDetailView.swift */,
 				3C7B6C022837BC31007AC754 /* DetailView.swift */,
 				3C1A471A28AC779C007A5ED3 /* ViewModelDetailView.swift */,
+				3C1A472B28AE78B7007A5ED3 /* ModelRatingview.swift */,
+				3CFA2F8D28AF205300CD85A4 /* RatingMovieView.swift */,
 				3C2AA82B283D160B00833799 /* RatingView.swift */,
 			);
 			path = DetailView;
@@ -272,6 +278,7 @@
 				3C7B6C032837BC31007AC754 /* DetailView.swift in Sources */,
 				3C1A472928AE5812007A5ED3 /* ModelDetailInfoView.swift in Sources */,
 				3CEF58E9283EEF84002792A4 /* ListView.swift in Sources */,
+				3C1A472C28AE78B7007A5ED3 /* ModelRatingview.swift in Sources */,
 				3C1A472428ADB905007A5ED3 /* AccountData.swift in Sources */,
 				3C253EF9285A093C00E6CB17 /* MoviesView.swift in Sources */,
 				3C7B6BEF28368E39007AC754 /* AlkemyChallengeApp.swift in Sources */,
@@ -282,6 +289,7 @@
 				3C1A471528A6D42A007A5ED3 /* TokenAuthenticationView.swift in Sources */,
 				3C1A472028AC79EB007A5ED3 /* ModelDetailView.swift in Sources */,
 				3C2AA82E283EB18700833799 /* DetailInfoView.swift in Sources */,
+				3CFA2F8E28AF205300CD85A4 /* RatingMovieView.swift in Sources */,
 				3C1A471728A6D51F007A5ED3 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
