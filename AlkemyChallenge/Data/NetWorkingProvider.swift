@@ -17,11 +17,11 @@ final class NetWorkingProvider {
     private let kStatusOk = 1...499
     private let kBaseUrl = "https://api.themoviedb.org/3/movie/popular?"
     private let kBaseSearch = "&language=en-US&page=1"
+    private let idAccount = 12426733
     
 //    PRUEBA DE DATOS
     private let pSessionId = "6e64c9a790fa06f6015b0a72a0e487af333ce9b1"
     private let pToken = "d2afb63299537fa04415033993ad0d201be7f6a8"
-    private let idAccount = 12426733
     
     func getTokenAlamofire (success: @escaping (_ token: TokenRequest) -> (), failure: @escaping (_ error: Error?) -> ()){
         
@@ -77,7 +77,7 @@ final class NetWorkingProvider {
     func addFavAlamofire(newFav: NewFavorite, success: @escaping (_ fav: NewFavoriteResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
         
 //        Recordar modificar la variable sessionId por la generada en el acceso a la         app y el account id
-        let url = "https://api.themoviedb.org/3/account/12426733/favorite?api_key=\(apiKey)&session_id=\(pSessionId)"
+        let url = "https://api.themoviedb.org/3/account/12426733/favorite?api_key=\(apiKey)&session_id=\(UserDefaultsFunctions.shared.sessionId!.session_id)"
         
         
         let headers: HTTPHeaders = [.contentType("application/json;charset=utf-8")]

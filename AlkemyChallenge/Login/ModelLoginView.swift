@@ -18,7 +18,7 @@ class TokenRequest: Decodable, ObservableObject {
     var request_token = ""
 }
 
-class SessionIdRequest: Decodable, ObservableObject {
+class SessionIdRequest: Codable, ObservableObject {
 //    MODELO DE RESPUESTA
 //    "success": true,
 //    "session_id": "79191836ddaa0da3df76a5ffef6f07ad6ab0c641"
@@ -30,3 +30,5 @@ class SessionIdRequest: Decodable, ObservableObject {
 struct TokenPost: Encodable {
     let request_token: String
 }
+
+

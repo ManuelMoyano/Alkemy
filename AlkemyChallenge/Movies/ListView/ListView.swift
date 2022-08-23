@@ -19,37 +19,48 @@ struct ListView: View {
     }
     var filteredMovies: Response
     @ObservedObject var favoriteMovies: Response
-    
+    @EnvironmentObject var login: LogInCheck
     
 
     var body: some View {
         NavigationView {
-            List (filteredMovies.results, id: \.id) { item in
-                VStack (alignment: .leading) {
-                    NavigationLink {
-                        DetailView (result: item, filter: filter, favoriteMovies: favoriteMovies)
-                    } label: {
-                        HStack {
-                            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path)")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                Color.red
+                List (filteredMovies.results, id: \.id) { item in
+                    VStack (alignment: .leading) {
+                        NavigationLink {
+                            DetailView (result: item, filter: filter, favoriteMovies: favoriteMovies)
+                        } label: {
+                            HStack {
+                                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path)")) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    Color.red
+                                }
+                                .frame(width: 50, height: 50)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                                
+                                Text (item.original_title)
                             }
-                            .frame(width: 50, height: 50)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            
-                            Text (item.original_title)
                         }
                     }
+                    .listRowSeparator(.hidden)
+                    .foregroundColor(.white)
+                    .listRowBackground(Color.black)
                 }
-                .listRowSeparator(.hidden)
-                .foregroundColor(.white)
-                .listRowBackground(Color.black)
-            }
-            .navigationTitle(viewTitle)
+                .listStyle(.grouped)
+                .navigationTitle(viewTitle)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("LogOut") {
+                            login.login.toggle()
+                        }
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .cornerRadius(_:20)
+                    }
+                }
             .navigationBarTitleDisplayMode(.inline)
+            
         }
-        .listStyle(.grouped)
     }
 }
 

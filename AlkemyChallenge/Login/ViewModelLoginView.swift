@@ -14,9 +14,9 @@ extension LoginView {
                 
         @Published var tokenRequest = TokenRequest()
         @Published var stringError = ""
-        @Published var sessionId = SessionIdRequest()
         @Published var newFav = NewFavorite(media_type: "movie", media_id: 507086, favorite: true)
         @Published var newFavResponse = NewFavoriteResponse()
+        
     
 //        ID EJEMPLOS
 //        minions 438148

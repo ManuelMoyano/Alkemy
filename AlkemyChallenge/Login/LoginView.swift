@@ -56,7 +56,8 @@ struct LoginView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding()
                     Section{
-                            Text("Authenticate Token")
+                        if UserDefaultsFunctions.shared.sessionId?.session_id == "" {
+                            Text("Sign up")
                             .foregroundColor(.white)
                             .frame(width:160, height: 30)
                             .background(.gray)
@@ -74,33 +75,19 @@ struct LoginView: View {
                                 showingAlert = true
                             }
                         }.sheet(isPresented: $showingSheet) {
-                            TokenAuthenticationView(url: "https://www.themoviedb.org/authenticate/\(viewModel.tokenRequest.request_token)")
+                            TokenAuthenticationView(token: viewModel.tokenRequest, url: "https://www.themoviedb.org/authenticate/\(viewModel.tokenRequest.request_token)")
                         }
-//                        if (viewModel.tokenRequest.request_token != "") {
-                            Button ("Login") {
-                                NetWorkingProvider.shared.creatSessionID(token: viewModel.tokenRequest) { sessionId in
-                                    viewModel.sessionId = sessionId
-                                } failure: { error in
-                                    print(error ?? "No error description")
-                                    viewModel.stringError = error.debugDescription
+                        } else {
+                            if hasValidEmail {
+                                Button ("Login") {
+                                    login.login.toggle()
                                 }
-
-                                login.login.toggle()
+                                    .foregroundColor(.white)
+                                    .frame(width:120, height: 30)
+                                    .background(.blue)
+                                    .cornerRadius(_:20)
                             }
-                                .foregroundColor(.white)
-                                .frame(width:120, height: 30)
-                                .background(.blue)
-                                .cornerRadius(_:20)
-//                            }
-//                        Button("Session Id") {
-//                            NetWorkingProvider.shared.creatSessionID(token: viewModel.tokenRequest) { sessionId in
-//                                viewModel.sessionId = sessionId
-//                            } failure: { error in
-//                                print(error ?? "No error description")
-//                                viewModel.stringError = error.debugDescription
-//                            }
-//                        }
-
+                        }
                     }
                     .alert("Invalid email adress", isPresented: $showingAlert) {
                         Button("OK") { }
@@ -110,6 +97,8 @@ struct LoginView: View {
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 30))
 
+            }.onAppear {
+                UserDefaultsFunctions.shared.loadFromUserDedault()
             }
     }
 }

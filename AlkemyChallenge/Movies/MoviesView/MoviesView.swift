@@ -23,7 +23,7 @@ struct MoviesView: View {
                         Label("Favorites", systemImage: "star.fill")
                     }
             }
-            .background(.black)
+//            .background(.black)
         }.onAppear {
             NetWorkingProvider.shared.getFavAlamorife { listFav in
                 favoriteMovies.results = listFav.results!
