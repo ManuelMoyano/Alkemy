@@ -9,7 +9,7 @@ import Foundation
 
     
 class Response: Codable, ObservableObject {
-    @Published var results = [Result]()
+    @Published var results = [ResultMovie]()
     
     static let example = Response()
     
@@ -20,7 +20,7 @@ class Response: Codable, ObservableObject {
         
         required init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            results = try container.decode([Result].self, forKey: .results)
+            results = try container.decode([ResultMovie].self, forKey: .results)
         }
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
@@ -32,7 +32,7 @@ class Response: Codable, ObservableObject {
 }
 
 
-struct Result: Codable, Equatable {
+struct ResultMovie: Codable, Equatable {
     var poster_path: String
 //    var adult: Bool
     var overview: String
@@ -48,7 +48,7 @@ struct Result: Codable, Equatable {
 //    var video: Bool
     var vote_average: Double
     
-    static let example = Result(poster_path:"Imagen", overview: "Descripcion", release_date: "Enero-2022", genre_ids: [2,5,1,9,10,12,19], id: 1, original_title: "SuperMan", original_language: "English", backdrop_path: "/ndlQ2Cuc3cjTL7lTynw6I4boP4S.jpg", popularity: 8.1, vote_average: 4.5)
+    static let example = ResultMovie(poster_path:"Imagen", overview: "Descripcion", release_date: "Enero-2022", genre_ids: [2,5,1,9,10,12,19], id: 1, original_title: "SuperMan", original_language: "English", backdrop_path: "/ndlQ2Cuc3cjTL7lTynw6I4boP4S.jpg", popularity: 8.1, vote_average: 4.5)
     
     }
 

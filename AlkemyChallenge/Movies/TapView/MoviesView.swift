@@ -14,11 +14,11 @@ struct MoviesView: View {
     var body: some View {
         ZStack {
             TabView {
-                ListView(filter: .alLMovies, filteredMovies: viewModel.allMovies, favoriteMovies: favoriteMovies)
+                ListView(authenticationViewModel: AuthenticationViewModel(), filter: .alLMovies, filteredMovies: viewModel.allMovies, favoriteMovies: favoriteMovies)
                     .tabItem {
                         Label("AllMovies", systemImage: "person.3")
                     }
-                ListView(filter: .favorites, filteredMovies: favoriteMovies, favoriteMovies: favoriteMovies)
+                ListView(authenticationViewModel: AuthenticationViewModel(), filter: .favorites, filteredMovies: favoriteMovies, favoriteMovies: favoriteMovies)
                     .tabItem {
                         Label("Favorites", systemImage: "star.fill")
                     }

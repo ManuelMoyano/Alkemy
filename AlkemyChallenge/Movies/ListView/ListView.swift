@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
+    @ObservedObject var authenticationViewModel: AuthenticationViewModel
     var filter: FilterType
     var viewTitle: String {
         switch filter {
@@ -51,9 +52,10 @@ struct ListView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("LogOut") {
-                            login.login.toggle()
+                            authenticationViewModel.logOut()
                         }
                             .foregroundColor(.white)
+                            .frame(width:70, height: 25)
                             .background(.blue)
                             .cornerRadius(_:20)
                     }
@@ -66,7 +68,7 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(filter: FilterType.alLMovies, filteredMovies: Response(), favoriteMovies: Response())
+        ListView(authenticationViewModel: AuthenticationViewModel(), filter: FilterType.alLMovies, filteredMovies: Response(), favoriteMovies: Response())
     }
 }
 

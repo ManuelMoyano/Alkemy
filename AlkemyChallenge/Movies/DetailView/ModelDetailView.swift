@@ -54,7 +54,7 @@ struct ListFavorites: Decodable {
 //    }
     
     var page: Int?
-    var results: [Result]?
+    var results: [ResultMovie]?
     var total_pages: Int?
     var total_results: Int?
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailInfoView: View {
     
-    var result: Result
+    var result: ResultMovie
     @State private var genres = [Genre]()
     
     var body: some View {
@@ -87,6 +87,6 @@ struct DetailInfoView: View {
 
 struct DetailInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailInfoView(result: Result.example)
+        DetailInfoView(result: ResultMovie.example)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @StateObject var viewModel = ViewModelDetailView()
-    var result: Result
+    var result: ResultMovie
     var filter: FilterType
     @State private var fav = false
     @ObservedObject var favoriteMovies: Response
@@ -138,6 +138,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(result: Result.example, filter: .alLMovies, favoriteMovies: Response())
+        DetailView(result: ResultMovie.example, filter: .alLMovies, favoriteMovies: Response())
     }
 }
