@@ -10,6 +10,7 @@ import Foundation
 final class UserDefaultsFunctions {
     
     var sessionId = try? JSONDecoder().decode(SessionIdRequest.self, from: UserDefaults.standard.object(forKey: "SavedData") as? Data ?? Data())
+    
     static let shared = UserDefaultsFunctions()
     
     private init() {}

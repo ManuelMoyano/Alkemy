@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
-    @ObservedObject var authenticationViewModel: AuthenticationViewModel
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     var filter: FilterType
     var viewTitle: String {
         switch filter {
@@ -68,7 +68,7 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(authenticationViewModel: AuthenticationViewModel(), filter: FilterType.alLMovies, filteredMovies: Response(), favoriteMovies: Response())
+        ListView(filter: FilterType.alLMovies, filteredMovies: Response(), favoriteMovies: Response())
     }
 }
 

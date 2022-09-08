@@ -39,15 +39,18 @@ final class AuthenticationViewModel: ObservableObject {
             print ("Error logout")
         }
     }
-    func login(email: String, password: String){
+    func login(email: String, password: String, failure: @escaping (_ error: Error?) -> ()){
         authentificationRepository.login(email: email, password: password) {[weak self] result in
             switch result {
             case .success(let user):
                 self?.user = user
                 self?.messageError = nil
             case .failure(let error):
+                failure(error)
                 self?.messageError = error.localizedDescription
             }
         }
     }
 }
+
+

@@ -24,10 +24,12 @@ struct AlkemyChallengeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if authenticationViewModel.user != nil {
+            if (authenticationViewModel.user != nil) {
                 MoviesView()
+                    .environmentObject(authenticationViewModel)
             } else {
-                LoginView(authenticationViewModel: AuthenticationViewModel())
+                LoginView()
+                    .environmentObject(authenticationViewModel)
             }
         }
     }
